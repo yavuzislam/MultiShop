@@ -15,8 +15,8 @@ public class DiscountService : IDiscountService
 
     public async Task<List<ResultCouponDto>> GetAllCouponAsync()
     {
-        string query="Select * From Coupons";
-        using (var connection=_context.CreateConnection())
+        string query = "Select * From Coupons";
+        using (var connection = _context.CreateConnection())
         {
             var values = await connection.QueryAsync<ResultCouponDto>(query);
             return values.ToList();
@@ -26,11 +26,11 @@ public class DiscountService : IDiscountService
     public async Task<GetByIdCouponDto> GetByIdCouponAsync(int id)
     {
         string query = "Select * From Coupons Where CouponID=@couponID";
-        var parameters=new DynamicParameters();
-        parameters.Add("@couponID",id);
+        var parameters = new DynamicParameters();
+        parameters.Add("@couponID", id);
         using (var connection = _context.CreateConnection())
         {
-            var values = await connection.QueryFirstOrDefaultAsync<GetByIdCouponDto>(query);
+            var values = await connection.QueryFirstOrDefaultAsync<GetByIdCouponDto>(query, parameters);
             return values;
         }
     }
@@ -42,7 +42,7 @@ public class DiscountService : IDiscountService
         parameters.Add("@rate", createCouponDto.Rate);
         parameters.Add("@isActive", createCouponDto.IsActive);
         parameters.Add("@validDate", createCouponDto.ValidDate);
-        using (var connection=_context.CreateConnection())
+        using (var connection = _context.CreateConnection())
         {
             await connection.ExecuteAsync(query, parameters);
         }
@@ -56,7 +56,7 @@ public class DiscountService : IDiscountService
         parameters.Add("@rate", updateCouponDto.Rate);
         parameters.Add("@isActive", updateCouponDto.IsActive);
         parameters.Add("@validDate", updateCouponDto.ValidDate);
-        using (var connection=_context.CreateConnection())
+        using (var connection = _context.CreateConnection())
         {
             await connection.ExecuteAsync(query, parameters);
         }
@@ -64,7 +64,13 @@ public class DiscountService : IDiscountService
 
     public async Task DeleteCouponAsync(int id)
     {
-        throw new NotImplementedException();
+        string query = "Delete From Coupons Where CouponID=@couponID";
+        var parameters = new DynamicParameters();
+        parameters.Add("@couponID", id);
+        using (var connection = _context.CreateConnection())
+        {
+            await connection.ExecuteAsync(query, parameters);
+        }
     }
 
 
