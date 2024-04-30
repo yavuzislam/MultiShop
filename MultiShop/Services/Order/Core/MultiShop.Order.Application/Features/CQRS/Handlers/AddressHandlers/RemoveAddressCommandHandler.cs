@@ -16,6 +16,6 @@ public class RemoveAddressCommandHandler
     public async Task Handle(RemoveAddressCommand command)
     {
         var value = await _repository.GetByIdAsync(command.Id);
-        await _repository.DeleteAsync(value);
+        await _repository.RemoveAsync(value);
     }
 }
