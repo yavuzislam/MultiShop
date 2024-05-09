@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace MultiShop.WebUI.ViewComponents.DefaultViewComponentPartial;
+namespace MultiShop.WebUI.ViewComponents.DefaultViewComponents;
 
 public class _CarouselDefaulComponentPartial : ViewComponent
 {
