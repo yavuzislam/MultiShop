@@ -20,6 +20,7 @@ public class GeneralMapping : Profile
         CreateMap<Product, CreateProductDto>().ReverseMap();
         CreateMap<Product, UpdateProductDto>().ReverseMap();
         CreateMap<Product, GetByIdProductDto>().ReverseMap();
+        CreateMap<Product, ResultProductsWıthCategoryDto>().ReverseMap();
 
         CreateMap<ProductDetail, ResultProductDetailDto>().ReverseMap();
         CreateMap<ProductDetail, CreateProductDetailDto>().ReverseMap();

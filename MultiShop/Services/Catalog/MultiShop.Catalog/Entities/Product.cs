@@ -12,6 +12,7 @@ public class Product
     public decimal ProductPrice { get; set; }
     public string ProductImageUrl { get; set; }
     public string ProductDescription { get; set; }
+    [BsonRepresentation(BsonType.ObjectId)]
     public string CategoryID { get; set; }
     [BsonIgnore]
     public Category Category { get; set; }

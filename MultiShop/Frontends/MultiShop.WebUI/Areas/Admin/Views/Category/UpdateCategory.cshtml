@@ -10,12 +10,11 @@
         <div class="col-md-12">
             <div class="chart-box">
                 <h4>Kategori Güncelleme Sayfası</h4>
+                <br />
                 <div class="bs-example" data-example-id="bordered-table">
 
                     <form method="post">
-                        <label> Kategori </label>
-                        <input type="text" readonly class="from-control" asp-for="CategoryID" />
-                        <br />
+                        <input type="hidden" asp-for="CategoryID" />
                         <label> Kategori Adı</label>
                         <input type="text" class="from-control" asp-for="CategoryName" />
                         <br />
