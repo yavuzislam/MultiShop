@@ -9,5 +9,6 @@ public interface IProductService
     Task CreateProductAsync(CreateProductDto createProductDto);
     Task UpdateProductAsync(UpdateProductDto updateProductDto);
     Task DeleteProductAsync(string id);
-    Task<List<ResultProductsWıthCategoryDto>> GetProductsWithCategoryAsync();
+    Task<List<ResultProductsWithCategoryDto>> GetProductsWithCategoryAsync();
+    Task<List<ResultProductsWithCategoryDto>> GetProductsWıthCategoryByCategoryIdAsync(string CategoryID);
 }

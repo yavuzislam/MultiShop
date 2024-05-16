@@ -2,7 +2,7 @@
 
 namespace MultiShop.Catalog.Dtos.ProductDtos;
 
-public class ResultProductsWıthCategoryDto
+public class ResultProductsWithCategoryDto
 {
     public string ProductID { get; set; }
     public string ProductName { get; set; }

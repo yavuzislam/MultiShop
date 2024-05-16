@@ -32,14 +32,14 @@ public class ProductService : IProductService
         var values = await _productCollection.Find<Product>(x => x.ProductID == id).FirstOrDefaultAsync();
         return _mapper.Map<GetByIdProductDto>(values);
     }
-    public async Task<List<ResultProductsWıthCategoryDto>> GetProductsWithCategoryAsync()
+    public async Task<List<ResultProductsWithCategoryDto>> GetProductsWithCategoryAsync()
     {
         var values = await _productCollection.Find(x => true).ToListAsync();
         foreach (var item in values)
         {
             item.Category = await _categoryCollection.Find<Category>(x => x.CategoryID == item.CategoryID).FirstAsync();
         }
-        return _mapper.Map<List<ResultProductsWıthCategoryDto>>(values);
+        return _mapper.Map<List<ResultProductsWithCategoryDto>>(values);
     }
     public async Task CreateProductAsync(CreateProductDto createProductDto)
     {
@@ -57,4 +57,13 @@ public class ProductService : IProductService
         await _productCollection.DeleteOneAsync(x => x.ProductID == id);
     }
 
+    public async Task<List<ResultProductsWithCategoryDto>> GetProductsWıthCategoryByCategoryIdAsync(string CategoryID)
+    {
+        var values = await _productCollection.Find<Product>(x => x.CategoryID == CategoryID).ToListAsync();
+        foreach (var item in values)
+        {
+            item.Category = await _categoryCollection.Find<Category>(x => x.CategoryID == item.CategoryID).FirstAsync();
+        }
+        return _mapper.Map<List<ResultProductsWithCategoryDto>>(values);
+    }
 }
