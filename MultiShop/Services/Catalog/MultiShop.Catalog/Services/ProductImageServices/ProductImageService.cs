@@ -46,5 +46,9 @@ public class ProductImageService : IProductImageService
         await _productImageCollection.DeleteOneAsync(x => x.ProductImageID == id);
     }
 
-
+    public async Task<GetByIdProductImageDto> GetByProductIdProductImageAsync(string id)
+    {
+        var values = await _productImageCollection.Find<ProductImage>(x => x.ProductID == id).FirstOrDefaultAsync(); ;
+        return _mapper.Map<GetByIdProductImageDto>(values);
+    }
 }

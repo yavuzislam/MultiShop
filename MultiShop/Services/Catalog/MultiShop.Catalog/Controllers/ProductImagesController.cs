@@ -29,6 +29,13 @@ public class ProductImagesController : ControllerBase
         return Ok(values);
     }
 
+    [HttpGet("ProductImagesByProductId")]
+    public async Task<IActionResult> ProductImagesByProductId(string id)
+    {
+        var values = await _ProductImageService.GetByProductIdProductImageAsync(id);
+        return Ok(values);
+    }
+
     [HttpPost]
     public async Task<IActionResult> CreateProductImage(CreateProductImageDto createProductImageDto)
     {
@@ -49,4 +56,5 @@ public class ProductImagesController : ControllerBase
         await _ProductImageService.DeleteProductImageAsync(id);
         return Ok("ProductImage successfully deleted.");
     }
+
 }

@@ -30,6 +30,12 @@ public class ProductDetailService : IProductDetailService
         var values = await _productDetailCollection.Find<ProductDetail>(x => x.ProductDetailID == id).FirstOrDefaultAsync();
         return _mapper.Map<GetByIdProductDetailDto>(values);
     }
+    public async Task<GetByIdProductDetailDto> GetByProductIdProductDetailAsync(string id)
+    {
+        var values = await _productDetailCollection.Find<ProductDetail>(x => x.ProductID == id).FirstOrDefaultAsync();
+        return _mapper.Map<GetByIdProductDetailDto>(values);
+    }
+
     public async Task CreateProductDetailAsync(CreateProductDetailDto createProductDetailDto)
     {
         var values = _mapper.Map<ProductDetail>(createProductDetailDto);
@@ -45,4 +51,5 @@ public class ProductDetailService : IProductDetailService
     {
         await _productDetailCollection.DeleteOneAsync(x => x.ProductDetailID == id);
     }
+
 }

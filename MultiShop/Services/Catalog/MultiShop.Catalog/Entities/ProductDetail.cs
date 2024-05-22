@@ -13,4 +13,4 @@ public class ProductDetail
     public string ProductID { get; set; }
     [BsonIgnore]
     public Product Product { get; set; }
-}
+} 
