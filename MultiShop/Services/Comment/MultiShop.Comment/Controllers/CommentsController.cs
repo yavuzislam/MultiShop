@@ -32,6 +32,13 @@ public class CommentsController : ControllerBase
         return Ok(value);
     }
 
+    [HttpGet("CommentListByProductId/{id}")]
+    public async Task<IActionResult> CommentListByProductId(string id)
+    {
+        var value = await _context.Set<UserComment>().Where(x => x.ProductID == id).ToListAsync();
+        return Ok(value);
+    }
+
     [HttpPost]
     public async Task<IActionResult> CreateComment(UserComment userComment)
     {
