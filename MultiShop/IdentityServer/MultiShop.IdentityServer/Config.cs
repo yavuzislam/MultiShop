@@ -63,7 +63,12 @@ namespace MultiShop.IdentityServer
                 ClientSecrets={new Secret("multishopsecret".Sha256())},
                 AllowedScopes={ "CatalogReadPermission", "CatalogFullPermission",
                     "BasketFullPermission" , "CommentFullPermission",
-                    "PaymentFullPermission","OcelotFullPermission" }
+                    "PaymentFullPermission","OcelotFullPermission",
+                IdentityServerConstants.LocalApi.ScopeName,
+                IdentityServerConstants.StandardScopes.OpenId,
+                IdentityServerConstants.StandardScopes.Profile,
+                IdentityServerConstants.StandardScopes.Email
+                 }
             },
 
             //Admin
