@@ -51,7 +51,7 @@ namespace MultiShop.IdentityServer
                 ClientName="Multi Shop Visitor User",
                 AllowedGrantTypes=GrantTypes.ClientCredentials,
                 ClientSecrets={new Secret("multishopsecret".Sha256())},
-                AllowedScopes={ "CatalogReadPermission", "CatalogFullPermission", "CommentFullPermission", "OcelotFullPermission" }
+                AllowedScopes={ "CatalogReadPermission", "CatalogFullPermission", "CommentFullPermission", "OcelotFullPermission", IdentityServerConstants.LocalApi.ScopeName }
             },
 
             //Manager
