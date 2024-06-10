@@ -11,7 +11,6 @@ public class ProductDetailService : IProductDetailService
     {
         _httpClient = httpClient;
     }
-
     public async Task<List<ResultProductDetailDto>> GetAllProductDetailAsync()
     {
         var responseMessage = await _httpClient.GetAsync("productdetails");
@@ -19,33 +18,28 @@ public class ProductDetailService : IProductDetailService
         var values = JsonConvert.DeserializeObject<List<ResultProductDetailDto>>(jsonData);
         return values;
     }
-
     public async Task<GetByIdProductDetailDto> GetByIdProductDetailAsync(string id)
     {
         var responseMessage = await _httpClient.GetAsync($"productdetails/{id}");
         var value = await responseMessage.Content.ReadFromJsonAsync<GetByIdProductDetailDto>();
         return value;
     }
-
-    public async Task CreateProductDetailAsync(CreateProductDetailDto createProductDetailDto)
-    {
-        await _httpClient.PostAsJsonAsync<CreateProductDetailDto>("productdetails", createProductDetailDto);
-    }
-
-    public async Task UpdateProductDetailAsync(UpdateProductDetailDto updateProductDetailDto)
-    {
-        await _httpClient.PutAsJsonAsync<UpdateProductDetailDto>("productdetails", updateProductDetailDto);
-    }
-
-    public async Task DeleteProductDetailAsync(string id)
-    {
-        await _httpClient.DeleteAsync($"productdetails/{id}");
-    }
-
     public async Task<GetByIdProductDetailDto> GetByProductIdProductDetailAsync(string id)
     {
         var responseMessage = await _httpClient.GetAsync("productdetails/GetProductDetailByProductId/" + id);
         var value = await responseMessage.Content.ReadFromJsonAsync<GetByIdProductDetailDto>();
         return value;
+    }
+    public async Task CreateProductDetailAsync(CreateProductDetailDto createProductDetailDto)
+    {
+        await _httpClient.PostAsJsonAsync<CreateProductDetailDto>("productdetails", createProductDetailDto);
+    }
+    public async Task UpdateProductDetailAsync(UpdateProductDetailDto updateProductDetailDto)
+    {
+        await _httpClient.PutAsJsonAsync<UpdateProductDetailDto>("productdetails", updateProductDetailDto);
+    }
+    public async Task DeleteProductDetailAsync(string id)
+    {
+        await _httpClient.DeleteAsync($"productdetails/{id}");
     }
 }
