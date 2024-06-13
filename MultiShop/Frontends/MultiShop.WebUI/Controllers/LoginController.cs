@@ -25,7 +25,7 @@ public class LoginController : Controller
     [HttpPost]
     public async Task<IActionResult> Index(SignInDto signInDto)
     {
-        _identityService.SignIn(signInDto);
+        await _identityService.SignIn(signInDto);
         return RedirectToAction("Index", "User");
     }
 
