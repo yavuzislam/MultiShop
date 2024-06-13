@@ -73,5 +73,15 @@ public class DiscountService : IDiscountService
         }
     }
 
-
+    public async Task<GetDiscountCodeDetailByCodeDto> GetCodelDetailByCodeAsync(string code)
+    {
+        string query = "Select * From Coupons Where Code=@code";
+        var parameters = new DynamicParameters();
+        parameters.Add("@code", code);
+        using (var connection = _context.CreateConnection())
+        {
+            var values = await connection.QueryFirstOrDefaultAsync<GetDiscountCodeDetailByCodeDto>(query, parameters);
+            return values;
+        }
+    }
 }

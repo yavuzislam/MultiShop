@@ -32,6 +32,13 @@ public class DiscountsController : ControllerBase
         return Ok(values);
     }
 
+    [HttpGet("GetCodelDetailByCode")]
+    public async Task<IActionResult> GetCodelDetailByCode(string code)
+    {
+        var values = await _discountService.GetCodelDetailByCodeAsync(code);
+        return Ok(values);
+    }
+
     [HttpPost]
     public async Task<IActionResult> CreateDiscountCoupon(CreateCouponDto createCouponDto)
     {

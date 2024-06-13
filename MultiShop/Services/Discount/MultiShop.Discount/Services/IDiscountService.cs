@@ -9,4 +9,5 @@ public interface IDiscountService
     Task CreateCouponAsync(CreateCouponDto createCouponDto);
     Task UpdateCouponAsync(UpdateCouponDto updateCouponDto);
     Task DeleteCouponAsync(int id);
+    Task<GetDiscountCodeDetailByCodeDto> GetCodelDetailByCodeAsync(string code);
 }

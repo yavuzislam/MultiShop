@@ -16,12 +16,19 @@ public class ShoppingCartController : Controller
         _basketService = basketService;
     }
 
-    [HttpGet]
-    public IActionResult Index()
+    [HttpGet] 
+    public async Task<IActionResult> Index(string code,int discountRate,decimal totalNewPriceWithDiscount)
     {
+        ViewBag.code = code;
+        ViewBag.discountRate = discountRate;
+        ViewBag.totalPriceWithDiscount = totalNewPriceWithDiscount;
         ViewBag.directory1 = "Anasayfa";
         ViewBag.directory2 = "Ürünler";
         ViewBag.directory3 = "Sepetim";
+        var values = await _basketService.GetBasket();
+        ViewBag.total = values.TotalPrice;
+        ViewBag.kdv = values.TotalPrice * 0.1m;
+        ViewBag.totalPrice = values.TotalPrice + ViewBag.kdv;
         return View();
     }
 

@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Index";
     Layout = "~/Views/UILayout/_UILayout.cshtml";
 }
@@ -16,8 +15,10 @@
 
             @await Component.InvokeAsync("_ShoppingCartProductListComponentPartial")
 
-            @await Component.InvokeAsync("_ShoppingCartDiscountCouponComponentPartial")
-            
+            @await Html.PartialAsync("~/Views/Discount/ConfirmDiscountCoupon.cshtml");
+
+            @* @await Component.InvokeAsync("_ShoppingCartDiscountCouponComponentPartial") *@
+
         </div>
     </div>
     <!-- Cart End -->
