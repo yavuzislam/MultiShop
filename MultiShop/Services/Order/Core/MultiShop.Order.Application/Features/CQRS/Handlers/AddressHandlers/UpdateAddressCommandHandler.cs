@@ -19,7 +19,7 @@ public class UpdateAddressCommandHandler
         values.UserID = command.UserID;
         values.District = command.District;
         values.City = command.City;
-        values.Detail = command.Detail;
+        values.Detail1 = command.Detail;
         await _repository.UpdateAsync(values);
     }
 }
