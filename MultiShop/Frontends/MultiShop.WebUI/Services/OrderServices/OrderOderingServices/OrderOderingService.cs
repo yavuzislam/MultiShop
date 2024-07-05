@@ -14,9 +14,8 @@ public class OrderOderingService : IOrderOderingService
 
     public async Task<List<ResultOrderingByUserIdDto>> GetOrderingByUserIdAsync(string id)
     {
-        var responseMessage = await _httpClient.GetAsync($"orderings/GetOrderingByUserId/{id}");
-        var jsonData = await responseMessage.Content.ReadAsStringAsync();
-        var values = JsonConvert.DeserializeObject<List<ResultOrderingByUserIdDto>>(jsonData);
+        var responseMessage = await _httpClient.GetAsync($"orderings/GetOrderingByUserId?id={id}");
+        var values= await responseMessage.Content.ReadFromJsonAsync<List<ResultOrderingByUserIdDto>>();
         return values;
     }
 }
