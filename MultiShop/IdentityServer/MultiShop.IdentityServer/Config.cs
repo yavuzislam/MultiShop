@@ -17,6 +17,7 @@ namespace MultiShop.IdentityServer
            new ApiResource("ResourcePayment"){Scopes={"PaymentFullPermission"} },
            new ApiResource("ResourceImages"){Scopes={"ImagesFullPermission"} },
            new ApiResource("ResourceOcelot"){Scopes={"OcelotFullPermission"} },
+           new ApiResource("ResourceMessage"){Scopes={"MessageFullPermission"} },
            new ApiResource(IdentityServerConstants.LocalApi.ScopeName)
         };
 
@@ -39,6 +40,7 @@ namespace MultiShop.IdentityServer
             new ApiScope("PaymentFullPermission","Full access to payment"),
             new ApiScope("ImagesFullPermission","Full access to images"),
             new ApiScope("OcelotFullPermission","Full access to ocelot"),
+            new ApiScope("MessageFullPermission","Full access to message"),
             new ApiScope(IdentityServerConstants.LocalApi.ScopeName)
         };
 
@@ -51,7 +53,9 @@ namespace MultiShop.IdentityServer
                 ClientName="Multi Shop Visitor User",
                 AllowedGrantTypes=GrantTypes.ClientCredentials,
                 ClientSecrets={new Secret("multishopsecret".Sha256())},
-                AllowedScopes={ "CatalogReadPermission", "CatalogFullPermission", "CommentFullPermission", "OcelotFullPermission", IdentityServerConstants.LocalApi.ScopeName }
+                AllowedScopes={ "CatalogReadPermission", "CatalogFullPermission",
+                    "CommentFullPermission", "OcelotFullPermission",
+                    IdentityServerConstants.LocalApi.ScopeName }
             },
 
             //Manager
@@ -63,7 +67,7 @@ namespace MultiShop.IdentityServer
                 ClientSecrets={new Secret("multishopsecret".Sha256())},
                 AllowedScopes={ "CatalogReadPermission", "CatalogFullPermission",
                     "BasketFullPermission" ,"DiscountFullPermission","OrderFullPermission", "CommentFullPermission",
-                    "PaymentFullPermission","OcelotFullPermission",
+                    "PaymentFullPermission","OcelotFullPermission","MessageFullPermission",
                 IdentityServerConstants.LocalApi.ScopeName,
                 IdentityServerConstants.StandardScopes.OpenId,
                 IdentityServerConstants.StandardScopes.Profile,
