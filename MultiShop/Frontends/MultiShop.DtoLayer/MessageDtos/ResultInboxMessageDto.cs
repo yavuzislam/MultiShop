@@ -1,6 +1,6 @@
-﻿namespace MultiShop.Message.DAL.Entities;
+﻿namespace MultiShop.DtoLayer.MessageDtos;
 
-public class UserMessage
+public class ResultInboxMessageDto
 {
     public int UserMessageID { get; set; }
     public string SenderID { get; set; }

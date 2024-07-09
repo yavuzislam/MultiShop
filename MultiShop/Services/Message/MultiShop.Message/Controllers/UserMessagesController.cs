@@ -9,11 +9,11 @@ namespace MultiShop.Message.Controllers;
 [Authorize]
 [Route("api/[controller]")]
 [ApiController]
-public class UserMessageController : ControllerBase
+public class UserMessagesController : ControllerBase
 {
     private readonly IUserMessageService _userMessageService;
 
-    public UserMessageController(IUserMessageService userMessageService)
+    public UserMessagesController(IUserMessageService userMessageService)
     {
         _userMessageService = userMessageService;
     }
