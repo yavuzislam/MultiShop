@@ -31,9 +31,9 @@ public class ProductController : Controller
     public async Task<IActionResult> ProductListWithCategory()
     {
         ProductViewbagList();
-        //var values = await _productService.GetProductsWithCategoryAsync();
-        //return View(values);
-        return View();
+        var values = await _productService.GetProductsWithCategoryAsync();
+        return View(values);
+
     }
     [HttpGet]
     [Route("CreateProduct")]
