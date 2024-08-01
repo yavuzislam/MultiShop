@@ -36,4 +36,9 @@ public class CargoCustomerManager : ICargoCustomerService
     {
         _cargoCustomerDal.Delete(id);
     }
+
+    public CargoCustomer TGetCargoCustomerById(string id)
+    {
+        return _cargoCustomerDal.GetCargoCustomerById(id);
+    }
 }

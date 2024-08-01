@@ -8,12 +8,10 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers;
 [Route("Admin/Feature")]
 public class FeatureController : Controller
 {
-    private readonly IHttpClientFactory _httpClientFactory;
     private readonly IFeatureService _FeatureService;
 
-    public FeatureController(IHttpClientFactory httpClientFactory, IFeatureService FeatureService)
+    public FeatureController(IFeatureService FeatureService)
     {
-        _httpClientFactory = httpClientFactory;
         _FeatureService = FeatureService;
     }
 

@@ -45,7 +45,8 @@ public class CargoCustomersController : ControllerBase
             Phone = createCargoCustomerDto.Phone,
             District = createCargoCustomerDto.District,
             City = createCargoCustomerDto.City,
-            Address = createCargoCustomerDto.Address
+            Address = createCargoCustomerDto.Address,
+            UserCustomerID = createCargoCustomerDto.UserCustomerID
         });
         return Ok("Cargo Customer successfully added.");
     }
@@ -63,7 +64,8 @@ public class CargoCustomersController : ControllerBase
             Phone = updateCargoCustomerDto.Phone,
             District = updateCargoCustomerDto.District,
             City = updateCargoCustomerDto.City,
-            Address = updateCargoCustomerDto.Address
+            Address = updateCargoCustomerDto.Address,
+            UserCustomerID = updateCargoCustomerDto.UserCustomerID
         });
         return Ok("Cargo Customer successfully updated.");
     }
@@ -74,5 +76,12 @@ public class CargoCustomersController : ControllerBase
     {
         _cargoCustomerService.TDelete(id);
         return Ok("Cargo Customer successfully deleted.");
+    }
+
+    [HttpGet("GetCargoCustomerById")]
+    public IActionResult GetCargoCustomerById(string id)
+    {
+        var value = _cargoCustomerService.TGetCargoCustomerById(id);
+        return Ok(value);
     }
 }

@@ -17,4 +17,5 @@ public class UserController : Controller
         var values = await _userService.GetUserInfo();
         return View(values);
     }
+
 }
